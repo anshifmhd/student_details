@@ -1,0 +1,94 @@
+{% extends 'index_admin.html' %}
+{% block content %}
+
+
+<style>
+    button, td a {
+        background-color: red;
+        color: white;
+    }
+</style>
+
+<div class="body" align="center">
+    <br><br><br><br>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <div class="row"><div class="col-lg-6">
+        <table border="2px solid black">
+            <h1>active students</h1>
+            <tr>
+                <th>NAME</th>
+                <th>PLACE</th>
+                <th>EMAIL</th>
+                <th>CONTACT</th>
+                <th>STATUS</th>
+    
+    
+            </tr>
+            {% for a in active_students %}
+            <tr>
+                <td>{{a.name}}</td>
+                <td>{{a.place}}</td>
+                <td>{{a.email}}</td>
+                <td>{{a.contact}}</td>
+                <td>{{a.status}}</td>
+                <td><a href="{% url 'admin:inactive_update' a.id %}">inactive</a></td>
+    
+            </tr>
+    
+    
+    
+    
+    
+            {% endfor %}
+        </table>
+    
+    </div>
+    <div class="col-lg-6">
+        <table border="2px solid black">
+            <h1>in-Active students</h1>
+            <tr>
+                <th>NAME</th>
+                <th>PLACE</th>
+                <th>EMAIL</th>
+                <th>CONTACT</th>
+                <th>STATUS</th>
+    
+    
+            </tr>
+            {% for d in inactive_students %}
+            <tr>
+                <td>{{d.name}}</td>
+                <td>{{d.place}}</td>
+                <td>{{d.email}}</td>
+                <td>{{d.contact}}</td>
+                <td>{{d.status}}</td>
+                <td><a href="{% url 'admin:active_update' d.id %}">actice</a></td>
+    
+            </tr>
+    
+    
+    
+    
+    
+            {% endfor %}
+        </table>
+    
+    </div></div>
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
